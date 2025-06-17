@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCAT Score Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f2f5;
+    }
+    .navbar {
+      background-color: #005b8e;
+      color: white;
+      padding: 1em;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+    .content {
+      padding: 2em;
+    }
+    .card {
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 2em;
+      padding: 1.5em;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+    .link-button {
+      color: #005b8e;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .popup-content {
+      background: white;
+      margin: 10% auto;
+      padding: 1em;
+      width: 80%;
+      max-width: 700px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .popup img {
+      width: 100%;
+      height: auto;
+    }
+    .close-btn {
+      background-color: #005b8e;
+      color: white;
+      padding: 0.5em 1em;
+      border: none;
+      margin-top: 1em;
+      cursor: pointer;
+    }
+    .login-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #005b8e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .login-box {
+      background: white;
+      padding: 2em;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+    .login-box input {
+      width: 90%;
+      margin: 0.5em 0;
+      padding: 0.5em;
+    }
+    .login-box button {
+      padding: 0.5em 1em;
+      background-color: #005b8e;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <h3>Login</h3>
+      <input type="text" id="username" placeholder="Username"><br>
+      <input type="password" id="password" placeholder="Password"><br>
+      <button onclick="login()">Login</button>
+      <p id="error" style="color: red; display: none;">Incorrect credentials</p>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div>MCAT Score Reporting</div>
+    <div>Divi Gupta</div>
+  </div>
+
+  <div class="content" id="mainContent" style="display: none;">
+    <div class="card">
+      <h2>Welcome</h2>
+      <p><strong>AAMC ID</strong>: 16291507</p>
+      <p><strong>Date of Birth</strong>: 05/24/2005</p>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">Most Recent Exam Dates</h3>
+      <p><span class="link-button" onclick="openPopup()">May 15, 2025 – Score Report</span></p>
+    </div>
+
+    <div class="card">
+      <h3 class="section-title">Important Dates</h3>
+      <p><a href="#">View the MCAT Score Release Schedule</a> for release dates.</p>
+      <p><a href="#">View the MCAT Registration Calendar</a> for upcoming exam dates.</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <img src="score-report.png" alt="MCAT Score Report">
+      <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+      if (u === "GUPTAD0524" && p === "doctordreams") {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
